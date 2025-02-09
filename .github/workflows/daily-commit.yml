@@ -2,10 +2,9 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '25 13 * * *'
+    - cron: '35 13 * * *'
 
   workflow_dispatch:
-
 
 
 jobs:
@@ -19,6 +18,11 @@ jobs:
       - name: 21f1003816@ds.study.iitm.ac.in
         run: echo "Hello, world!"
     
+      - name: Configure Git (21f1003816@ds.study.iitm.ac.in)
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "21f1003816@ds.study.iitm.ac.in"
+
       - name: Create a dummy commit
         run: |
             echo "Automated commit on $(date)" >> daily_commit_log.txt
