@@ -1,0 +1,27 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '25 13 * * *'
+
+  workflow_dispatch:
+
+
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: 21f1003816@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
+    
+      - name: Create a dummy commit
+        run: |
+            echo "Automated commit on $(date)" >> daily_commit_log.txt
+            git add daily_commit_log.txt
+            git commit -m "Daily automated commit - $(date)"
+            git push
